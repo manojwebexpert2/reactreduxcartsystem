@@ -4,22 +4,23 @@ const intialState = {
     cartData: []
 }
 
-export default function cartItems(state = intialState, action) {
+export default function cartItems(state = [], action) {
 
     switch (action.type) {
         case ADD_TO_CART:
             
         console.warn("reducer",action);
 
-            return {
+            return [
                 ...state,
-                cartData: action.data
-            }
+               { cartData: action.data}
+            ]
         case REMOVE_TO_CART:
-            return {
-                ...state,
-                cartData: action.data
-            }
+            state.pop();
+            return [
+
+                ...state
+            ]
             break;
         default: return state;
     }
